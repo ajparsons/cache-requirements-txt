@@ -33,14 +33,14 @@ runs:
       uses: actions/cache@v3
       with:
         path: ${{ inputs.venv_path }}
-        key: ${{ runner.os }}-venv-{{ inputs.cache_key}}-${{ steps.hash-req.outputs.hashkey }}
+        key: ${{ runner.os }}-venv-${{ inputs.cache_key}}-${{ steps.hash-req.outputs.hashkey }}
 
     - name: Setup python
       uses: actions/setup-python@v4
       if: ${{ steps.cache-env.outputs.cache-hit != 'true' }}
       id: python
       with:
-        python-version: ${{ inputs. python_version}}
+        python-version: ${{ inputs.python_version}}
         update-environment: false
 
     - name: Setup venv
