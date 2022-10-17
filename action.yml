@@ -12,7 +12,7 @@ inputs:
     default: /tmp/venv_cache/
   python_version:
     description: python_version
-    default: 3.10
+    default: "3.10"
 outputs:
   cache-hit:
     description: "Was the cache used"
