@@ -50,6 +50,7 @@ runs:
       run: |
         ${{ steps.python.outputs.python-path }} -m venv $VENV_PATH
         source $VENV_PATH/bin/activate
-        pip install -r ${{ github.action_path }}/requirements.txt
+        pip install -r $REQUIREMENTS_PATH
       env:
         VENV_PATH: ${{ inputs.venv_path }}
+        REQUIREMENTS_PATH: ${{ inputs.requirements_path }}
