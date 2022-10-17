@@ -1,0 +1,55 @@
+name: 'Cache requirements.txt'
+version: 0.1.0
+description: 'Loads a venv from a requirements.txt, with a cache wrapper'
+inputs:
+  requirements_path: 
+    description: 'path to requirements.txt'
+  cache_key:
+    description: "short-key-for-action"
+    default: cache-key
+  venv_path:
+    description: Venv path for action
+    default: /tmp/venv_cache/
+  python_version:
+    description: python_version
+    default: 3.10
+outputs:
+  cache-hit:
+    description: "Was the cache used"
+    value: ${{ steps.cache-env.outputs.cache-hit }}
+
+runs:
+  using: "composite"
+  steps:
+
+    - name: Hash requirements
+      id: hash-req
+      shell: bash
+      run: |
+        echo "hashkey=$(shasum ${{ inputs.requirements_path }}| awk '{ print $1 }')" >> $GITHUB_OUTPUT
+
+    - name: Cache venv
+      id: cache-env
+      uses: actions/cache@v3
+      with:
+        path: ${{ inputs.venv_path }}
+        key: ${{ runner.os }}-venv-{{ inputs.cache_key}}-${{ steps.hash-req.outputs.hashkey }}
+
+    - name: Setup python
+      uses: actions/setup-python@v4
+      if: ${{ steps.cache-env.outputs.cache-hit != 'true' }}
+      id: python
+      with:
+        python-version: ${{ inputs. python_version}}
+        update-environment: false
+
+    - name: Setup venv
+      if: ${{ steps.cache-env.outputs.cache-hit != 'true' }}
+      id: setup_venv
+      shell: bash
+      run: |
+        ${{ steps.python.outputs.python-path }} -m venv $VENV_PATH
+        source $VENV_PATH/bin/activate
+        pip install -r ${{ github.action_path }}/requirements.txt
+      env:
+        VENV_PATH: ${{ inputs.venv_path }}
