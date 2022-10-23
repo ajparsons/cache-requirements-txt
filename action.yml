@@ -37,7 +37,6 @@ runs:
 
     - name: Setup python
       uses: actions/setup-python@v4
-      if: ${{ steps.cache-env.outputs.cache-hit != 'true' }}
       id: python
       with:
         python-version: ${{ inputs.python_version}}
