@@ -1,6 +1,6 @@
 # Cache requirements.txt
 
-Version: 0.1.0
+Version: 1.0.0
 
 
 
@@ -11,7 +11,7 @@ Loads a venv from a requirements.txt, with a cache wrapper
 ```yaml
 
 # It is better practice to use the SHA hash of this tag rather than the tag itself.
-- uses: ajparsons/cache-requirements-txt@v0
+- uses: ajparsons/cache-requirements-txt@v1
   id: example-step 
   with:
     requirements_path: '' 
