@@ -1,5 +1,5 @@
 name: 'Cache requirements.txt'
-version: 0.1.0
+version: 1.0.0
 description: 'Loads a venv from a requirements.txt, with a cache wrapper'
 inputs:
   requirements_path: 
