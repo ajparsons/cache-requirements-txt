@@ -23,7 +23,7 @@ runs:
   steps:
 
     - name: Self warning
-      uses: ajparsons/sha-version-warning@53c5e9cbf96afb276cb2cf486ebd45c5d5db0e11 #v1.0.1
+      uses: ajparsons/sha-version-warning@53c5e9cbf96afb276cb2cf486ebd45c5d5db0e11 # v1.0.1
       with: 
         action_path: ${{ github.action_path }}
 

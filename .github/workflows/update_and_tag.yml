@@ -30,12 +30,12 @@ jobs:
 
       - name: Update git tags
         id: update_tags
-        uses: ajparsons/semver-to-tag@685b3e41a5be3f5797d88ac8fc6843748421e3db #v1.0.1
+        uses: ajparsons/semver-to-tag@685b3e41a5be3f5797d88ac8fc6843748421e3db # v1.0.1
         with:
           semver: ${{ steps.get_version.outputs.value }}
           update_tags: true
 
-      - uses: ajparsons/auto-action-readme@2e1b933dfcb5eb039588f29003e9eff7457624b2 #v1.0.0
+      - uses: ajparsons/auto-action-readme@1f153f1aa27ac190249281d31304893d433d7e6e # v1.0.1
         with:
           tag: ${{ steps.update_tags.outputs.major_tag }}
           output_file: README.md
