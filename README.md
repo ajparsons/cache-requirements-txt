@@ -2,8 +2,6 @@
 
 Version: 1.0.0
 
-
-
 Loads a venv from a requirements.txt, with a cache wrapper
 
 ## Usage
@@ -21,51 +19,33 @@ Loads a venv from a requirements.txt, with a cache wrapper
 
 ```
 
-
 ## Inputs
 
 ### requirements_path
 
-
-
 path to requirements.txt
 
-
-
-
 ### cache_key
-
-
 
 short-key-for-action
 
 Default: cache-key
 
-
 ### venv_path
-
-
 
 Venv path for action
 
 Default: /tmp/venv_cache/
 
-
 ### python_version
-
-
 
 python_version
 
 Default: 3.10
-
-
-
 
 ## Outputs
 
 ### cache-hit
 
 Was the cache used
-
 
